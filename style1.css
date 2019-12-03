@@ -1,0 +1,35 @@
+.app-button{
+    background-color: #01AAAD;
+    width: 220px;
+    margin:0 47px;
+    display:inline-block;
+    line-height: 120px;
+	padding:auto;
+}
+.row{
+  text-align:center;
+  /*the same margin which is every button have, it is for small screen, and if you have many buttons.*/
+  margin-left:-20px;
+  marin-right:-20px;
+  /*margin-bottom:-20px;*/
+  padding:auto;
+}
+.header {
+	width: 30%;
+	margin: 30px auto 30px;
+	color: white;
+	background: green;
+	text-align: center;
+	border: 1px solid #B0C4DE;
+	border-bottom: 100%;
+	border-radius: 10px 10px 0px 0px;
+	padding: 10px;
+}
+{
+	margin: 0px;
+	padding: 0px;
+}
+body {
+	font-size: 120%;
+	background: white;
+}

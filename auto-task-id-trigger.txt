@@ -1,0 +1,41 @@
+CREATE TABLE req_form (
+  task_ID           NUMBER(12)    NOT NULL,
+  DESCRIPTION  VARCHAR2(50)  NOT NULL,
+  //other coloumns... 
+
+);
+
+//start from here if table exists 
+
+ALTER TABLE req_form ADD (
+  CONSTRAINT dept_pk PRIMARY KEY (task_ID));
+
+CREATE SEQUENCE task_seq START WITH 1000000
+increment by 1
+no cache 
+nocycle
+;
+
+CREATE OR REPLACE TRIGGER insert_on_deny
+AFTER INSERT ON deny 
+FOR EACH ROW
+
+BEGIN
+  UPDATE ASSIGN_FORMIN2 SET STATUS='Denied' where TASKID=:new.taskid;
+END;
+
+CREATE OR REPLACE TRIGGER delete_from_newtask
+AFTER INSERT ON deny 
+FOR EACH ROW
+
+BEGIN
+  UPDATE NEWTASK SET DONE='done' where TASKID=:new.taskid;
+END;
+
+CREATE OR REPLACE TRIGGER delete_from_newtask
+AFTER INSERT ON ASSIGN_FORMIN
+FOR EACH ROW
+
+BEGIN
+  UPDATE NEWTASK SET DONE='done' where TASKID=:new.taskid;
+END;
